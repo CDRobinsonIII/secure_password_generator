@@ -1,6 +1,28 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Create arrays to hold the different criteria values.
+
+var lowerCaseLettersCriteria = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCaseLettersCriteria = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numberCriteria = [0,1,2,3,4,5,6,7,8,9];
+var specialCharsCriteria = ["!", "@","$","%","^","&","*","(",")"];
+var userPasswordCritera = [];
+
+// This for Loop is to test out accessing the special characters in the specialCharsCriteria array.
+// for (var i=0; i < specialCharsCriteria.length; i++) {
+// console.log ("This is special character " + specialCharsCriteria[i]);
+//}
+
+// Test combining arrays
+// Array.prototype.push.apply(userPasswordCritera,numberCriteria);
+// Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
+
+//   for (var i=0; i < userPasswordCritera.length; i++) {
+//   console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
+//   }
+
+
 // Write password to the #password input
 function writePassword() {
   
@@ -29,7 +51,13 @@ function writePassword() {
     alert ("You must enter y for yes or n for no.");
     i--;
   }
+
+  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
+  else if (optionLowerCase === "y") {
+    Array.prototype.push.apply(userPasswordCritera,lowerCaseLettersCriteria);
   }
+  }
+
   // Console log test to make sure we're getting answer into optionLowerCase variable.
   console.log(optionLowerCase);
 
@@ -43,6 +71,11 @@ function writePassword() {
   if ((optionUpperCase !=="n") && (optionUpperCase !=="y")) {
     alert ("You must enter y for yes or n for no.");
     i--;
+  }
+
+  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
+  else if (optionUpperCase === "y") {
+    Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
   }
   }
   // Console log test to make sure we're getting answer into optionUpperCase variable.
@@ -60,6 +93,11 @@ function writePassword() {
     alert ("You must enter y for yes or n for no.");
     i--;
   }
+
+  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
+  else if (optionNumbers === "y") {
+    Array.prototype.push.apply(userPasswordCritera,numberCriteria);
+  }
   }
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
   console.log(optionNumbers);
@@ -76,9 +114,20 @@ function writePassword() {
     alert ("You must enter y for yes or n for no.");
     i--;
   }
+
+  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
+  else if (optionSpecialChars === "y") {
+    Array.prototype.push.apply(userPasswordCritera,specialCharsCriteria);
+  }
   }
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
   console.log(optionSpecialChars);
+
+  // Test to see if lowerCaseLettersCriteria array was in fact add to the userPasswordCritera array after selecting yes.
+    for (var i=0; i < userPasswordCritera.length; i++) {
+    console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
+    }
+    alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
 
 
   var password = generatePassword();
