@@ -8,6 +8,7 @@ var upperCaseLettersCriteria = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"
 var numberCriteria = [0,1,2,3,4,5,6,7,8,9];
 var specialCharsCriteria = ["!", "@","$","%","^","&","*","(",")"];
 var userPasswordCritera = [];
+var userSecurePassword =[];
 
 // This for Loop is to test out accessing the special characters in the specialCharsCriteria array.
 // for (var i=0; i < specialCharsCriteria.length; i++) {
@@ -30,7 +31,7 @@ function writePassword() {
   // Prompt is inside of a for Loop until the user enters a password length between 8 and 128.
   
   for (var i = 0; i < 1;i++) {
-    var howlongpw = prompt("How long would you like your password to be (between 8 and 128 charactors)?");
+    var howlongpw = prompt("How long would you like your password to be (between 8 and 128 characters)?");
 
   if ((howlongpw<8) || (howlongpw>128)) {
     alert ("You must select a password length between 8 and 128");
@@ -127,7 +128,25 @@ function writePassword() {
     for (var i=0; i < userPasswordCritera.length; i++) {
     console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
     }
-    alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
+
+// Now that we have the userPasswordCritera array which contains the available characters for the users password we can run 
+// a loop (based on howlongpw variable) to add random characters to their empty password array. 
+// Generate a random number (using math.floor and math.random) from 0 to userPasswordCritera.length to pick random index in userPasswordCritera array. 
+// Then add it to the userSecurePassword array
+// Display user's password as an alert when the password is created. 
+
+alert("The user wants their password to be " + howlongpw +" characters long");
+alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
+
+for (var i=0; i < howlongpw; i++) {
+  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length) + 1;
+  var characterToAddToPassword = userPasswordCritera[randomIndexGenerator];
+  userSecurePassword.push(characterToAddToPassword);
+  }
+
+alert("The user's new password is: " + userSecurePassword.join(""));
+
+
 
 
   var password = generatePassword();
