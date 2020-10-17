@@ -10,39 +10,29 @@ var specialCharsCriteria = ["!", "@","$","%","^","&","*","(",")"];
 var userPasswordCritera = [];
 var userSecurePassword =[];
 
-// This for Loop is to test out accessing the special characters in the specialCharsCriteria array.
-// for (var i=0; i < specialCharsCriteria.length; i++) {
-// console.log ("This is special character " + specialCharsCriteria[i]);
-//}
-
-// Test combining arrays
-// Array.prototype.push.apply(userPasswordCritera,numberCriteria);
-// Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
-
-//   for (var i=0; i < userPasswordCritera.length; i++) {
-//   console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
-//   }
-
-
 // Write password to the #password input
 function writePassword() {
   
   // Ask user how long they want their password to be.
   // Prompt is inside of a for Loop until the user enters a password length between 8 and 128.
   
-  for (var i = 0; i < 1;i++) {
     var howlongpw = prompt("How long would you like your password to be (between 8 and 128 characters)?");
+    var howlongpwConvert = parseInt(howlongpw);
+    if (isNaN(howlongpw) === true) {
+      return alert ("You must select a number between 8 and 128");
+    }
+    console.log(parseInt(howlongpw));
 
-  if ((howlongpw<8) || (howlongpw>128)) {
-    alert ("You must select a password length between 8 and 128");
-    i--;
+  if ((parseInt(howlongpw)<8) || (parseInt(howlongpw)>128)) {
+    return alert ("You must select a password length between 8 and 128");
   }
-  }
+
   // Console log test to make sure we're getting answer into howlongpw variable.
   console.log(howlongpw);
 
   // Ask user if they want to include lower case letters in their password.
   // Prompt is inside of a for Loop until the user enters a yes or no.
+
   for (var i = 0; i < 1;i++) {
     var optionLowerCase = prompt("Would you like to include lower case letters in your password y for yes or n for no.");
     console.log("Before lower case:" + optionLowerCase);
@@ -64,6 +54,7 @@ function writePassword() {
 
   // Ask user if they want to include upper case letters in their password.
   // Prompt is inside of a for Loop until the user enters a yes or no.
+ 
   for (var i = 0; i < 1;i++) {
     var optionUpperCase = prompt("Would you like to include upper case letters in your password y for yes or n for no.");
     console.log("Before lower case:" + optionUpperCase);
@@ -79,11 +70,13 @@ function writePassword() {
     Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
   }
   }
+
   // Console log test to make sure we're getting answer into optionUpperCase variable.
   console.log(optionUpperCase);
 
   // Ask user if they want to include numbers in their password.
   // Prompt is inside of a for Loop until the user enters a yes or no.
+
   for (var i = 0; i < 1;i++) {
     var optionNumbers = prompt("Would you like to include numbers in your password y for yes or n for no.");
     console.log("Before lower case:" + optionNumbers);
@@ -100,11 +93,13 @@ function writePassword() {
     Array.prototype.push.apply(userPasswordCritera,numberCriteria);
   }
   }
+
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
   console.log(optionNumbers);
 
   // Ask user if they want to include special characters in their password.
   // Prompt is inside of a for Loop until the user enters a yes or no.
+
   for (var i = 0; i < 1;i++) {
     var optionSpecialChars = prompt("Would you like to include special characters in your password y for yes or n for no.");
     console.log("Before lower case:" + optionSpecialChars);
@@ -121,6 +116,7 @@ function writePassword() {
     Array.prototype.push.apply(userPasswordCritera,specialCharsCriteria);
   }
   }
+
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
   console.log(optionSpecialChars);
 
@@ -145,9 +141,6 @@ for (var i=0; i < howlongpw; i++) {
   }
 
 alert("The user's new password is: " + userSecurePassword.join(""));
-
-
-
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
