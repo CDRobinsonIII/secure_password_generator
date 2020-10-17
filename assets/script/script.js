@@ -6,7 +6,7 @@ var generateBtn = document.querySelector("#generate");
 var lowerCaseLettersCriteria = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCaseLettersCriteria = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numberCriteria = [0,1,2,3,4,5,6,7,8,9];
-var specialCharsCriteria = ["!", "@","$","%","^","&","*","(",")"];
+var specialCharsCriteria = ["!", "\"","@","$","%","^","&","*","(",")"];
 var userPasswordCritera = [];
 var userSecurePassword =[];
 
@@ -16,37 +16,24 @@ function writePassword() {
   // Ask user how long they want their password to be.
   // Prompt is inside of a for Loop until the user enters a password length between 8 and 128.
   
-    var howlongpw = prompt("How long would you like your password to be (between 8 and 128 characters)?");
-    var howlongpwConvert = parseInt(howlongpw);
+  var howlongpw = prompt("How long would you like your password to be (between 8 and 128 characters)?");
     if (isNaN(howlongpw) === true) {
-      return alert ("You must select a number between 8 and 128");
+      return alert ("You must select a number between 8 and 128, please try again.");
     }
-    console.log(parseInt(howlongpw));
 
-  if ((parseInt(howlongpw)<8) || (parseInt(howlongpw)>128)) {
-    return alert ("You must select a password length between 8 and 128");
-  }
+    if (((howlongpw)<8) || ((howlongpw)>128)) {
+      return alert ("You must select a password length between 8 and 128, please try again.");
+    }
 
   // Console log test to make sure we're getting answer into howlongpw variable.
   console.log(howlongpw);
 
   // Ask user if they want to include lower case letters in their password.
-  // Prompt is inside of a for Loop until the user enters a yes or no.
+  // Use a confirm, OK = yes include. Cancel = no exclude.
 
-  for (var i = 0; i < 1;i++) {
-    var optionLowerCase = prompt("Would you like to include lower case letters in your password y for yes or n for no.");
-    console.log("Before lower case:" + optionLowerCase);
-    var optionLowerCase = optionLowerCase.toLowerCase();
-    console.log("After lower case:" + optionLowerCase);
-  if ((optionLowerCase !=="n") && (optionLowerCase !=="y")) {
-    alert ("You must enter y for yes or n for no.");
-    i--;
-  }
-
-  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
-  else if (optionLowerCase === "y") {
+  var optionLowerCase = confirm("Hit OK if you would like to include lower case letters in your password. Please hit Cancel if you would like to exclude them.");
+  if (optionLowerCase ===true) {
     Array.prototype.push.apply(userPasswordCritera,lowerCaseLettersCriteria);
-  }
   }
 
   // Console log test to make sure we're getting answer into optionLowerCase variable.
