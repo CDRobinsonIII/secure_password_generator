@@ -37,80 +37,45 @@ function writePassword() {
   }
 
   // Console log test to make sure we're getting answer into optionLowerCase variable.
-  console.log(optionLowerCase);
+  console.log("I want to have lower case letters in my password:" + optionLowerCase);
 
   // Ask user if they want to include upper case letters in their password.
-  // Prompt is inside of a for Loop until the user enters a yes or no.
- 
-  for (var i = 0; i < 1;i++) {
-    var optionUpperCase = prompt("Would you like to include upper case letters in your password y for yes or n for no.");
-    console.log("Before lower case:" + optionUpperCase);
-    var optionUpperCase = optionUpperCase.toLowerCase();
-    console.log("After lower case:" + optionUpperCase);
-  if ((optionUpperCase !=="n") && (optionUpperCase !=="y")) {
-    alert ("You must enter y for yes or n for no.");
-    i--;
-  }
-
-  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
-  else if (optionUpperCase === "y") {
+  // Use a confirm, OK = yes include. Cancel = no exclude.
+  
+  var optionUpperCase = confirm("Hit OK if you would like to include upper case letters in your password. Please hit Cancel if you would like to exclude them.");
+  if (optionUpperCase ===true) {
     Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
-  }
   }
 
   // Console log test to make sure we're getting answer into optionUpperCase variable.
-  console.log(optionUpperCase);
+  console.log("I want to have upper case letters in my password:" + optionUpperCase);
 
   // Ask user if they want to include numbers in their password.
-  // Prompt is inside of a for Loop until the user enters a yes or no.
+  // Use a confirm, OK = yes include. Cancel = no exclude.
 
-  for (var i = 0; i < 1;i++) {
-    var optionNumbers = prompt("Would you like to include numbers in your password y for yes or n for no.");
-    console.log("Before lower case:" + optionNumbers);
-    var optionNumbers = optionNumbers.toLowerCase();
-    console.log("After lower case:" + optionNumbers);
-
-  if ((optionNumbers !=="n") && (optionNumbers !=="y")) {
-    alert ("You must enter y for yes or n for no.");
-    i--;
-  }
-
-  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
-  else if (optionNumbers === "y") {
+  var optionNumbers = confirm("Hit OK if you would like to include numbers in your password. Please hit Cancel if you would like to exclude them.");
+  if (optionNumbers ===true) {
     Array.prototype.push.apply(userPasswordCritera,numberCriteria);
   }
-  }
 
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
-  console.log(optionNumbers);
+  console.log("I want to have numbers in my password:" + optionNumbers);
 
   // Ask user if they want to include special characters in their password.
-  // Prompt is inside of a for Loop until the user enters a yes or no.
+  // Use a confirm, OK = yes include. Cancel = no exclude.
 
-  for (var i = 0; i < 1;i++) {
-    var optionSpecialChars = prompt("Would you like to include special characters in your password y for yes or n for no.");
-    console.log("Before lower case:" + optionSpecialChars);
-    var optionSpecialChars = optionSpecialChars.toLowerCase();
-    console.log("After lower case:" + optionSpecialChars);
-
-  if ((optionSpecialChars !=="n") && (optionSpecialChars !=="y")) {
-    alert ("You must enter y for yes or n for no.");
-    i--;
-  }
-
-  // If user selects yes to add the optionLowerCase to their password add the lowerCaseLettersCriteria array to their userPasswordCritera array.
-  else if (optionSpecialChars === "y") {
+  var optionSpecialChars = confirm("Hit OK if you would like to include special characters in your password. Please hit Cancel if you would like to exclude them.");
+  if (optionSpecialChars ===true) {
     Array.prototype.push.apply(userPasswordCritera,specialCharsCriteria);
-  }
   }
 
   // Console log test to make sure we're getting answer into optionSpecialChars variable.
-  console.log(optionSpecialChars);
+  console.log("I want to have special characters in my password:" + optionSpecialChars);
 
-  // Test to see if lowerCaseLettersCriteria array was in fact add to the userPasswordCritera array after selecting yes.
-    for (var i=0; i < userPasswordCritera.length; i++) {
-    console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
-    }
+  // Test to see if user's password criteria was in fact added to the userPasswordCritera array after hitting OK.
+  for (var i=0; i < userPasswordCritera.length; i++) {
+  console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
+  }
 
 // Now that we have the userPasswordCritera array which contains the available characters for the users password we can run 
 // a loop (based on howlongpw variable) to add random characters to their empty password array. 
