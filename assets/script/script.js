@@ -10,6 +10,12 @@ var specialCharsCriteria = ["!","\[","\]","\"","\\","\'","\,","@","$","%","^","&
 var userPasswordCritera = [];
 var userSecurePassword =[];
 
+function generatePassword () {
+  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length) + 1;
+  var characterToAddToPassword = userPasswordCritera[randomIndexGenerator];
+  userSecurePassword.push(characterToAddToPassword);
+}
+
 // Write password to the #password input
 function writePassword() {
   
@@ -81,7 +87,7 @@ function writePassword() {
 // a loop (based on howlongpw variable) to add random characters to their empty password array. 
 // Generate a random number (using math.floor and math.random) from 0 to userPasswordCritera.length to pick random index in userPasswordCritera array. 
 // Then add it to the userSecurePassword array
-// Display user's password as an alert when the password is created. 
+// Display user's password in the text area.
 
 alert("The user wants their password to be " + howlongpw +" characters long");
 alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
@@ -92,9 +98,10 @@ for (var i=0; i < howlongpw; i++) {
   userSecurePassword.push(characterToAddToPassword);
   }
 
-alert("The user's new password is: " + userSecurePassword.join(""));
+// alert("The user's new password is: " + userSecurePassword.join(""));
 
-  var password = generatePassword();
+  // var password = generatePassword();
+  var password = userSecurePassword.join("");
   var passwordText = document.querySelector("#password");
 
 
