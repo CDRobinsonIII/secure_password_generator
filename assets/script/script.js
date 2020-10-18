@@ -93,9 +93,11 @@ alert("The user wants their password to be " + howlongpw +" characters long");
 alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
 
 for (var i=0; i < howlongpw; i++) {
-  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length) + 1;
+  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length)+1;
+  console.log("Random number is: " + randomIndexGenerator);
   var characterToAddToPassword = userPasswordCritera[randomIndexGenerator];
   userSecurePassword.push(characterToAddToPassword);
+  console.log(i + "random character is: " + characterToAddToPassword);
   }
 
 // alert("The user's new password is: " + userSecurePassword.join(""));
@@ -106,7 +108,7 @@ for (var i=0; i < howlongpw; i++) {
 
 
   passwordText.value = password;
-
+alert("The length of the user's password is: " + userSecurePassword.length)
 }
 
 // Add event listener to generate button
