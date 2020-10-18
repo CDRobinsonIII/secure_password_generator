@@ -15,9 +15,11 @@ This was accomplished by:
     <li>JavaScript</li>
 </ul>
 
-## What I Learne
+## What I Learned
 
 While working on this project I learned how to use various JavaScript elements such as: arrays, functions, and for Loops. I also learned how to use Math.floor and Math.random to genarate random whole numbers. I used the generated random number as the index for the password criteria array. 
+
+![Here is a screenshot of the password generator.](./assets/images/ScreenShot_Password_Generator.jpg)
 
 ## Link to password generator website:
 https://cdrobinsoniii.github.io/secure_password_generator/
