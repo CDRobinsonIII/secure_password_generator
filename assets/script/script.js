@@ -31,9 +31,6 @@ function writePassword() {
       return alert ("You must select a password length between 8 and 128, please try again.");
     }
 
-  // Console log test to make sure we're getting answer into howlongpw variable.
-  console.log(howlongpw);
-
   // Ask user if they want to include lower case letters in their password.
   // Use a confirm, OK = yes include. Cancel = no exclude.
 
@@ -41,9 +38,6 @@ function writePassword() {
   if (optionLowerCase ===true) {
     Array.prototype.push.apply(userPasswordCritera,lowerCaseLettersCriteria);
   }
-
-  // Console log test to make sure we're getting answer into optionLowerCase variable.
-  console.log("I want to have lower case letters in my password:" + optionLowerCase);
 
   // Ask user if they want to include upper case letters in their password.
   // Use a confirm, OK = yes include. Cancel = no exclude.
@@ -53,9 +47,6 @@ function writePassword() {
     Array.prototype.push.apply(userPasswordCritera,upperCaseLettersCriteria);
   }
 
-  // Console log test to make sure we're getting answer into optionUpperCase variable.
-  console.log("I want to have upper case letters in my password:" + optionUpperCase);
-
   // Ask user if they want to include numbers in their password.
   // Use a confirm, OK = yes include. Cancel = no exclude.
 
@@ -63,9 +54,6 @@ function writePassword() {
   if (optionNumbers ===true) {
     Array.prototype.push.apply(userPasswordCritera,numberCriteria);
   }
-
-  // Console log test to make sure we're getting answer into optionSpecialChars variable.
-  console.log("I want to have numbers in my password:" + optionNumbers);
 
   // Ask user if they want to include special characters in their password.
   // Use a confirm, OK = yes include. Cancel = no exclude.
@@ -75,32 +63,21 @@ function writePassword() {
     Array.prototype.push.apply(userPasswordCritera,specialCharsCriteria);
   }
 
-  // Console log test to make sure we're getting answer into optionSpecialChars variable.
-  console.log("I want to have special characters in my password:" + optionSpecialChars);
-
   // Test to see if user's password criteria was in fact added to the userPasswordCritera array after hitting OK.
-  for (var i=0; i < userPasswordCritera.length; i++) {
+  for (var t=0; t < userPasswordCritera.length; t++) {
   console.log ("Users password criteria to choose from " + userPasswordCritera[i]);
   }
 
 // Now that we have the userPasswordCritera array which contains the available characters for the users password we can run 
 // a loop (based on howlongpw variable) to add random characters to their empty password array. 
 // Generate a random number (using math.floor and math.random) from 0 to userPasswordCritera.length to pick random index in userPasswordCritera array. 
-// Then add it to the userSecurePassword array
-// Display user's password in the text area.
-
-alert("The user wants their password to be " + howlongpw +" characters long");
-alert("The number of characters the user included in their password criteria is: " + userPasswordCritera.length);
+// Then add it to the userSecurePassword array and display user's password in the text area when password is complete.
 
 for (var i=0; i < howlongpw; i++) {
-  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length)+1;
-  console.log("Random number is: " + randomIndexGenerator);
+  var randomIndexGenerator = Math.floor(Math.random() * userPasswordCritera.length);
   var characterToAddToPassword = userPasswordCritera[randomIndexGenerator];
   userSecurePassword.push(characterToAddToPassword);
-  console.log(i + "random character is: " + characterToAddToPassword);
   }
-
-// alert("The user's new password is: " + userSecurePassword.join(""));
 
   // var password = generatePassword();
   var password = userSecurePassword.join("");
@@ -108,7 +85,6 @@ for (var i=0; i < howlongpw; i++) {
 
 
   passwordText.value = password;
-alert("The length of the user's password is: " + userSecurePassword.length)
 }
 
 // Add event listener to generate button
